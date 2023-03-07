@@ -16,7 +16,7 @@ def draw_imgs(imgs, area: int):
                 try:
                     a = i[m*area:(m+1)*area,n*area:(n+1)*area]
                     cv2.imwrite('./draw_imgs/'+str(j)+'/'+str(m)+'_'+str(n) +'.png', a)
-                    print(a)
+                    # print(a)
                 except:
                     pass
 

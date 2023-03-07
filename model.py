@@ -99,11 +99,11 @@ class ResNet(nn.Module):
             layers += [*blocks, norm_builder(), actv_builder()]
         else:
             layers += [norm_builder(), actv_builder(), *blocks]
-        layers += [nn.Conv2d(conv_channels, 32, 3, 1,1),
+        layers += [nn.Conv2d(conv_channels, 32, (1, 2 * n + 1), 1, ),
                    actv_builder(),
-                   nn.Conv2d(32, in_channels, (1, 2*n+1), 1),]
+                   nn.Conv2d(32, in_channels, 1, 1), ]
         self.net = nn.Sequential(*layers)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        print(x.shape)
+        # print(x.shape)
         return self.net(x)
